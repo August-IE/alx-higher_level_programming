@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-"""A program that imports functions from a given file, does some Maths,
-    prints the result."""
-
 a = 10
 b = 5
 
