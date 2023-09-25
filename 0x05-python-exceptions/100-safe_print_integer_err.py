@@ -2,6 +2,7 @@
 
 import sys
 
+
 def safe_print_integer_err(value):
     """A function that prints an integer.
 
@@ -9,7 +10,7 @@ def safe_print_integer_err(value):
         value : The integer to print.
 
     Returns:
-        True - If value has been correctly printed 
+        True - If value has been correctly printed
         Otherwise - False.
     """
     try:
