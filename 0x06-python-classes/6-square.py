@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define a Square based on 5-square.py."""
 
+
 class Square:
     """A class square."""
 
