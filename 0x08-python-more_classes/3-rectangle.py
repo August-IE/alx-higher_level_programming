@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""".Defines a Rectangle class based on 2-rectangle.py."""
+"""Defines a Rectangle class based on 2-rectangle.py."""
 
 
 class Rectangle:
@@ -49,15 +49,15 @@ class Rectangle:
         """Returns the perimeter of the Rectangle."""
         if self.__width == 0 or self.__height == 0:
             return (0)
-        return (self.__width + self.__width) + (self.__height + self.__height)
+        return (2 * (self.__width + self.__height))
 
     def __str__(self):
         """Return the printable representation of the Rectangle.
 
         Represents the rectangle with the # character.
         """
-
-        if self.width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ("")
 
-        return ("#" * self.__width + "\n") * self.__height
+        rect = ["#" * self.__width for _ in range(self.__height)]
+        return "\n".join(rect)
