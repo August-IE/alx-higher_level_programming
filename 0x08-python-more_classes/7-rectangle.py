@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a Rectangle class based on 6-rectangle.py."""
 
+
 class Rectangle:
     """A rectangle class.
 
@@ -78,7 +79,6 @@ class Rectangle:
         """Return the string representation of the Rectangle."""
 
         return f"Rectangle({self.__width}, {self.__height})"
-
 
     def __del__(self):
         """Print a message for every deletion of a Rectangle."""
