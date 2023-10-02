@@ -67,10 +67,10 @@ class Rectangle:
         """
 
         if self.width == 0 or self.height == 0:
-            return ""
+            return ("")
 
-        return ("#" * self.width + "\n" +
-                "#" * self.width + "\n") * (self.height - 1)
+        rect = ["#" * self.__width for _ in range(self.__height)]
+        return "\n".join(rect)
 
     def __repr__(self):
         """Returns a string representation of the Rectangle."""
