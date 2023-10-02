@@ -47,6 +47,23 @@ def solve_nqueens(N):
 
     board = [['.' for _ in range(N)] for _ in range(N)]
 
+    def get_solution(board):
+        """
+        Extract the solution from the chessboard in the specified format.
+
+        Args:
+            board (list): The current state of the chessboard.
+
+        Returns:
+            list: A list of lists representing the queen positions.
+        """
+        solution = []
+        for r in range(N):
+            for c in range(N):
+                if board[r][c] == 'Q':
+                    solution.append([r, c])
+        return solution
+
     def solve(row):
         """
         Recursively find and print all solutions to the N-Queens puzzle.
@@ -58,9 +75,8 @@ def solve_nqueens(N):
             None
         """
         if row == N:
-            for i in range(N):
-                print(''.join(board[i]))
-            print()
+            solution = get_solution(board)
+            print(solution)
             return
 
         for col in range(N):
