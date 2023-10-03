@@ -1,0 +1,1 @@
+0 (Because there are no integers in the expression)
