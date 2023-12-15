@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script to retrieve and display all states from the hbtn_0e_0_usa database.
+A script that lists all states from the database hbtn_0e_0_usa.
 """
 
 # Required imports
