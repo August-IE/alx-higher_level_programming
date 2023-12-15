@@ -14,16 +14,16 @@ if __name__ == "__main__":
         passwd=sys.argv[2],  # MySQL password
         db=sys.argv[3]       # Database name
     )
-    
+
     # Creating a cursor to execute SQL queries
     c = db.cursor()
-    
+
     # Executing a SELECT query to retrieve columns from the 'states' table
     c.execute("SELECT `id`, `name` FROM `states` ORDER BY `states`.`id` ASC")
-    
+
     # Fetching all rows from the executed query
     states = c.fetchall()
-    
+
     # Displaying each retrieved state
     for state in states:
         print(state)
