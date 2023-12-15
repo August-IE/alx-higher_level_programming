@@ -28,5 +28,5 @@ if __name__ == "__main__":
 
     # Displaying each retrieved state
     for state in states:
-        if state[1][0] == "N": # Checks if the state name starts with 'N'
+        if state[1][0] == "N":  # Checks if the state name starts with 'N'
             print(state)
