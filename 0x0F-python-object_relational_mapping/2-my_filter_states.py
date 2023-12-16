@@ -10,38 +10,30 @@ import MySQLdb
 
 if __name__ == "__main__":
 
-    # Extracting command line arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
     state_name = sys.argv[4]
 
-    try:
-        # Establishing a connection to the database
-        db = MySQLdb.connect(
-            user=username,
-            passwd=password,
-            db=database,
-            host='localhost'  # The default localhost
-        )
+    # Establishing a connection to the database
+    db = MySQLdb.connect(
+        user=username,
+        passwd=password,
+        db=database,
+        host='localhost',
+    )
 
-        # Creating a cursor to execute SQL queries
-        c = db.cursor()
+    # Creating a cursor to execute SQL queries
+    c = db.cursor()
 
-        # Executing a SELECT query to retrieve states
-        c.execute("SELECT `id`, `name` FROM `states` WHERE BINARY `name` = %s",
-                  (state_name,))
+    # Execute a query to fetch states based on the provided state name
+    query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
+    c.execute(query, (state_name,))
 
-        # Fetching all rows from the executed query
-        states = c.fetchall()
+    # Displaying each value in the states
+    states = c.fetchall()
+    for state in states:
+        print(state)
 
-        # Displaying each retrieved state
-        for state in states:
-            print(state)
-
-    except MySQLdb.Error as e:
-        print("Error connecting to the database:", e)
-    finally:
-        # Close the database connection
-        if 'db' in locals() and db.open:
-            db.close()
+    # Close the database connection
+    db.close()
