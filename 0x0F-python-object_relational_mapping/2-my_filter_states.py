@@ -9,35 +9,21 @@ import sys
 import MySQLdb
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: ./2-my_filter_states.py "
-              " < username > < password > < database > < state_name >")
-        sys.exit(1)
-
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
 
     # Establishing a connection to the database
     db = MySQLdb.connect(
-        user=username,
-        passwd=password,
-        db=database,
-        host='localhost',
-    )
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3])
 
     # Creating a cursor to execute SQL queries
     c = db.cursor()
 
     # Execute a query to fetch states based on the provided state name
-    query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
-    c.execute(query, (state_name,))
+    c.execute("SELECT * FROM `states` \
+                WHERE BINARY `name` = '{}'".format(sys.argv[4]))
 
     # Displaying each value in the states
     states = c.fetchall()
     for state in states:
         print(state)
-
-    # Close the database connection
-    db.close()
