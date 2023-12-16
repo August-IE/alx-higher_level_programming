@@ -9,6 +9,10 @@ import sys
 import MySQLdb
 
 if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print("Usage: ./2-my_filter_states.py "
+              " < username > < password > < database > < state_name >")
+        sys.exit(1)
 
     username = sys.argv[1]
     password = sys.argv[2]
