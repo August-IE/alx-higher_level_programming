@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-A script that changes the name of a State obj from the database hbtn_0e_6_usa
+A script that deletes all State objects with a name containing the letter
+a from the database hbtn_0e_6_usa.
 """
 
 import sys
@@ -15,6 +16,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter_by(id=2).first()
-    state.name = "New Mexico"
+    for state in session.query(State):
+        if "a" in state.name:
+            session.delete(state)
     session.commit()
