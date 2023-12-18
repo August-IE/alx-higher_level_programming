@@ -3,11 +3,10 @@
 A script that deletes all State objects with a name containing the letter
 a from the database hbtn_0e_6_usa.
 """
-
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import State
+from model_state import Base, State
 
 if __name__ == "__main__":
     engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
@@ -16,15 +15,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Create a list to store the states to delete
-    states_to_delete = []
+    states = session.query(State).filter(State.name.contains('a'))
 
-    # Iterate over the query result and add states to delete list
-    for state in session.query(State):
-        if "a" in state.name:
-            states_to_delete.append(state)
-
-    for state in states_to_delete:
+    for state in states:
         session.delete(state)
-
-    session.commit()
+        session.commit()
