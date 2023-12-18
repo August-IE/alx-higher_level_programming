@@ -16,7 +16,15 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # Create a list to store the states to delete
+    states_to_delete = []
+
+    # Iterate over the query result and add states to delete list
     for state in session.query(State):
         if "a" in state.name:
-            session.delete(state)
+            states_to_delete.append(state)
+
+    for state in states_to_delete:
+        session.delete(state)
+
     session.commit()
